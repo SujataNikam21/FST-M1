@@ -1,26 +1,26 @@
 package Activities;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class Activity1 {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class  Activity1 {
 
         // Initialize a new ArrayList
-        static ArrayList<String> list = new ArrayList<String>();
+         static ArrayList<String> list;
         @BeforeAll
         public static void setup () {
+            list = new ArrayList<String>();
             list.add("alpha"); // at index 0
             list.add("beta"); // at index 1
             System.out.println(list);
         }
         // Test method to test the insert operation
         @Test
-
-        public void insert () {
+        @Order(1)
+        public void insertTest () {
             // Assertion for size
             assertEquals(2, list.size(), "Wrong size");
             // Add new element
@@ -38,8 +38,8 @@ public class Activity1 {
         // Test method to test the replace operation
 
         @Test
-
-        public void replace () {
+        @Order(2)
+        public void replaceTest () {
             // Replace new element
             list.set(1, "mony");
             System.out.println(list);
